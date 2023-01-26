@@ -1,9 +1,14 @@
 import Image from "next/image";
-import { useState } from "react";
-import styles from "../../styles/Pokemon.module.css";
+import { useState, useEffect } from "react";
+
+import {
+  Pokemon_styled,
+  Pokemon_info_base,
+  Pokemon_info_extras,
+} from "../../styles/Pokemon.js";
 
 export const getStaticPaths = async () => {
-  const maxPokemons = 251;
+  const maxPokemons = 500;
   const api = "https://pokeapi.co/api/v2/pokemon/";
 
   const res = await fetch(`${api}/?limit=${maxPokemons}`);
@@ -28,7 +33,7 @@ export const getStaticProps = async (context) => {
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
 
   const data = await res.json();
-  console.log(data.moves);
+  console.log(data);
   return {
     props: { pokemon: data },
   };
@@ -37,26 +42,40 @@ export const getStaticProps = async (context) => {
 export default function Pokemon({ pokemon }) {
   const [shiny, setShiny] = useState(false);
 
+  const [moves, setMoves] = useState(false);
+
+  // const [barColor, setBarColor] = useState("#fff");
+
+  // useEffect(() => {
+  //   function getRandomColor() {
+  //     var letters = "0123456789ABCDEF";
+  //     var color = "#";
+  //     for (var i = 0; i < 6; i++) {
+  //       color += letters[Math.floor(Math.random() * 16)];
+  //     }
+  //     console.log(color);
+  //     setBarColor(color);
+  //   }
+  // }, []);
+
   return (
-    <div className={styles.card}>
-      <div className={styles.text}>
+    <Pokemon_styled>
+      <div className="card">
         {shiny ? (
           <>
-            <div className={styles.nameCard}>
+            <div className="card_title">
               <button onClick={() => setShiny(!shiny)}>Base</button>
-              <h1>
+              <h1 className="poke_name">
                 #{pokemon.id}-<span>{pokemon.name} shiny</span>
               </h1>
             </div>
             <Image
-              className={styles.img}
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon.id}.png`}
               width="250"
               height="250"
               alt={pokemon.name}
             />
             <Image
-              className={styles.img}
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${pokemon.id}.png`}
               width="250"
               height="250"
@@ -65,22 +84,20 @@ export default function Pokemon({ pokemon }) {
           </>
         ) : (
           <>
-            <div className={styles.nameCard}>
+            <div className="card_title">
               <button onClick={() => setShiny(!shiny)}>Shiny</button>
-              <h1>
+              <h1 className="poke_name">
                 #{pokemon.id}-<span>{pokemon.name}</span>
               </h1>
             </div>
 
             <Image
-              className={styles.img}
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
               width="250"
               height="250"
               alt={pokemon.name}
             />
             <Image
-              className={styles.img}
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokemon.id}.png`}
               width="250"
               height="250"
@@ -89,13 +106,11 @@ export default function Pokemon({ pokemon }) {
           </>
         )}
 
-        <div className={styles.AboutPokemon}>
+        <Pokemon_info_base>
           <section>
             <h1>Type:</h1>
             {pokemon.types.map((item, index) => (
-              <span className={styles.type} key={index}>
-                [{item.type.name}]
-              </span>
+              <span key={index}>[{item.type.name}]</span>
             ))}
           </section>
           <section>
@@ -106,16 +121,59 @@ export default function Pokemon({ pokemon }) {
             <h1>weight:</h1>
             <p>{pokemon.weight / 10} kg</p>
           </section>
-          <div className={styles.abilitys}>
+          <section>
+            <h1>Base experience:</h1>
+            <p>{pokemon.base_experience}</p>
+          </section>
+          <section>
             <h1>abilities:</h1>
             <div>
               {pokemon.abilities.map((item) => (
-                <span className={styles.ability}>[{item.ability.name}]</span>
+                <span>[{item.ability.name}]</span>
+              ))}
+            </div>
+          </section>
+        </Pokemon_info_base>
+      </div>
+      {/* ///////////////////////////////////////////// */}
+      <Pokemon_info_extras>
+        {moves ? (
+          <div className="moves">
+            <button onClick={() => setMoves(!moves)}>info</button>
+            <div>
+              <h1>moves:</h1>
+              <div className="move-list">
+                {pokemon.moves.map((item) => (
+                  <p>{item.move.name}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="info_bar">
+            <button onClick={() => setMoves(!moves)}>moves</button>
+            <div>
+              <h1>Info:</h1>
+              {pokemon.stats.map((item) => (
+                <div className="bar">
+                  <h1> {item.stat.name}:</h1>
+                  <div>
+                    <p
+                      style={{
+                        backgroundColor: "#a0522d",
+                        height: "100%",
+                        width: `${item.base_stat}px`,
+                      }}
+                    >
+                      {item.base_stat}/300
+                    </p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        )}
+      </Pokemon_info_extras>
+    </Pokemon_styled>
   );
 }

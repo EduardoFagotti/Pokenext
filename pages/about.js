@@ -1,12 +1,9 @@
-import Image from "next/image";
-
-import styles from "../styles/About.module.css";
-import Navbar from "../components/Navbar";
-
+import react from "react";
+import { About_styled } from "../styles/About";
 export default function About() {
   return (
-    <div className={styles.about}>
-      <div className={styles.text}>
+    <About_styled>
+      <div>
         <h1>About the project</h1>
         <p>
           {" "}
@@ -16,6 +13,6 @@ export default function About() {
           viewed here https://pokeapi.co{" "}
         </p>
       </div>
-    </div>
+    </About_styled>
   );
 }
