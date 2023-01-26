@@ -33,7 +33,6 @@ export const getStaticProps = async (context) => {
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
 
   const data = await res.json();
-  console.log(data);
   return {
     props: { pokemon: data },
   };
@@ -43,20 +42,6 @@ export default function Pokemon({ pokemon }) {
   const [shiny, setShiny] = useState(false);
 
   const [moves, setMoves] = useState(false);
-
-  // const [barColor, setBarColor] = useState("#fff");
-
-  // useEffect(() => {
-  //   function getRandomColor() {
-  //     var letters = "0123456789ABCDEF";
-  //     var color = "#";
-  //     for (var i = 0; i < 6; i++) {
-  //       color += letters[Math.floor(Math.random() * 16)];
-  //     }
-  //     console.log(color);
-  //     setBarColor(color);
-  //   }
-  // }, []);
 
   return (
     <Pokemon_styled>
