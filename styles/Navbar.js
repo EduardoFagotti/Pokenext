@@ -35,6 +35,11 @@ export const Nav_styled = styled.div`
     }
   }
 
+  input {
+    padding: 5px;
+    border-color: #a0522d;
+  }
+
   ul {
     display: flex;
     list-style: none;

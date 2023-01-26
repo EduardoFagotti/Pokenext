@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+// import { FcSearch } from "react-icons/fc";
 
 import { Nav_styled } from "../styles/Navbar.js";
 
@@ -15,6 +16,9 @@ export default function Navbar() {
         />
         <h1>PokeNext</h1>
       </div>
+      {/* <div className="search">
+        <input type={"text"} placeholder="Search..." />
+      </div> */}
       <ul>
         <li>
           <Link href="/">

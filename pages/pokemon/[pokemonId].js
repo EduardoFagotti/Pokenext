@@ -149,7 +149,7 @@ export default function Pokemon({ pokemon }) {
                   <div>
                     <p
                       style={{
-                        backgroundColor: "#a0522d",
+                        backgroundColor: "#000080",
                         height: "100%",
                         width: `${item.base_stat}px`,
                       }}
