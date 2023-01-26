@@ -9,10 +9,20 @@ export const Pokemon_styled = styled.div`
   background-size: 65%;
   background-position: center center;
 
+  @media screen and (max-width: 925px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 925px) {
+    margin-left: 0;
+  }
+
   .card {
     width: 40%;
     height: 550px;
-    margin-top: 50px;
+    margin-top: 20px;
     padding: 15px;
     margin-bottom: 100px;
     text-align: center;
@@ -23,6 +33,55 @@ export const Pokemon_styled = styled.div`
     color: black;
     font-size: 12px;
     border-radius: 5px;
+
+    @media screen and (max-width: 925px) {
+      width: 70%;
+      height: 580px;
+      margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: 550px) {
+      width: 90%;
+      height: 560px;
+    }
+
+    .img {
+      @media screen and (max-width: 1425px) {
+        width: 200px;
+        height: 200px;
+      }
+
+      @media screen and (max-width: 1175px) {
+        width: 180px;
+        height: 180px;
+      }
+
+      @media screen and (max-width: 1075px) {
+        width: 150px;
+        height: 150px;
+      }
+
+      @media screen and (max-width: 925px) {
+        width: 200px;
+        height: 200px;
+      }
+      @media screen and (max-width: 700px) {
+        width: 180px;
+        height: 180px;
+      }
+      @media screen and (max-width: 635px) {
+        width: 150px;
+        height: 150px;
+      }
+      @media screen and (max-width: 550px) {
+        width: 180px;
+        height: 180px;
+      }
+      @media screen and (max-width: 455px) {
+        width: 120px;
+        height: 120px;
+      }
+    }
 
     .card_title {
       display: flex;
@@ -42,6 +101,16 @@ export const Pokemon_styled = styled.div`
   .poke_name {
     text-align: center;
     text-transform: capitalize;
+
+    @media screen and (max-width: 1175px) {
+      font-size: 18px;
+    }
+    @media screen and (max-width: 970px) {
+      font-size: 16px;
+    }
+    @media screen and (max-width: 550px) {
+      font-size: 14px;
+    }
   }
 `;
 export const Pokemon_info_base = styled.div`
@@ -49,6 +118,15 @@ export const Pokemon_info_base = styled.div`
   flex-wrap: wrap;
   text-align: start;
   margin-top: 20px;
+
+  @media screen and (max-width: 1075px) {
+    margin-top: 10px;
+  }
+
+  @media screen and (max-width: 930px) {
+    display: flex;
+    flex-direction: column;
+  }
 
   section {
     margin-bottom: 10px;
@@ -60,9 +138,22 @@ export const Pokemon_info_base = styled.div`
     display: flex;
     align-items: center;
 
+    @media screen and (max-width: 1075px) {
+      margin-bottom: 5px;
+    }
+
+    @media screen and (max-width: 970px) {
+      display: flex;
+      flex-direction: column;
+    }
+
     h1 {
       font-size: 18px;
       padding-bottom: 10px;
+
+      @media screen and (max-width: 1175px) {
+        font-size: 16px;
+      }
     }
   }
 `;
@@ -70,7 +161,7 @@ export const Pokemon_info_base = styled.div`
 export const Pokemon_info_extras = styled.div`
   width: 40%;
   height: 550px;
-  margin-top: 50px;
+  margin-top: 20px;
   padding: 15px;
   margin-bottom: 100px;
   border: 10px solid #a0522d;
@@ -80,6 +171,16 @@ export const Pokemon_info_extras = styled.div`
   color: black;
   font-size: 12px;
   border-radius: 5px;
+
+  @media screen and (max-width: 925px) {
+    margin-top: 0;
+    width: 70%;
+  }
+
+  @media screen and (max-width: 550px) {
+    width: 90%;
+    /* height: 560px; */
+  }
 
   button {
     width: 100px;
@@ -102,7 +203,6 @@ export const Pokemon_info_extras = styled.div`
         margin-bottom: 10px;
       }
       .move-list {
-        /* width: 100%; */
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
@@ -137,12 +237,14 @@ export const Pokemon_info_extras = styled.div`
       flex-direction: column;
       justify-content: start;
       padding: 10px;
+      width: 310px;
 
       h1 {
         font-size: 16px;
       }
 
       div {
+        margin-left: -20px;
         width: 300px;
         color: #fff;
         margin-top: 10px;

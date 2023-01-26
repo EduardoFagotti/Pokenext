@@ -70,12 +70,14 @@ export default function Pokemon({ pokemon }) {
               </h1>
             </div>
             <Image
+              className="img"
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon.id}.png`}
               width="250"
               height="250"
               alt={pokemon.name}
             />
             <Image
+              className="img"
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${pokemon.id}.png`}
               width="250"
               height="250"
@@ -92,12 +94,14 @@ export default function Pokemon({ pokemon }) {
             </div>
 
             <Image
+              className="img"
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
               width="250"
               height="250"
               alt={pokemon.name}
             />
             <Image
+              className="img"
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokemon.id}.png`}
               width="250"
               height="250"
